@@ -1,0 +1,134 @@
+Cahier des charges – Application mobile GlowUp
+ 
+Présentation générale
+Description de l’entreprise
+Nom : GlowUp
+Fondateur : Romérique AGOSSOU
+Secteur d’activité : Beauté, technologie, e-commerce
+Mission : Offrir une expérience de maquillage assistée par intelligence artificielle, accessible et personnalisée pour les femmes africaines, à commencer par le Sénégal.
+Zone géographique d’intervention : Sénégal (lancement), expansion UEMOA prévue
+Concurrents identifiés : Salons de maquillage, coachs beauté/santé, applications de maquillage virtuel comme YouCam Makeup (Taïwan) et Perfect365 (USA)
+ 
+Contexte
+Le projet naît d’un besoin observé chez de nombreuses femmes sénégalaises : accéder à des conseils maquillage personnalisés, adaptés à leur style, culture et budget. GlowUp ambitionne d’unifier maquillage virtuel, coaching, e-commerce et réseau professionnel dans une seule plateforme mobile.
+ 
+Existant
+Il n'existe actuellement aucune version ou MVP de l’application. Le projet démarre de zéro.
+ 
+Présentation du projet
+Définition
+Création d’une application mobile de maquillage assisté par IA intégrant :
+• Analyse faciale et recommandations personnalisées
+• Coaching maquillage guidé
+• Marketplace intégrée (produits cosmétiques)
+• Espace professionnel pour maquilleurs
+• Services de mise en relation géolocalisée
+• Formations et compétitions interactives
+L’agence sélectionnée prendra en charge :
+• Conception
+• Développement (iOS + Android)
+• Design UX/UI
+• Lancement sur stores
+• Suivi et maintenance technique
+ 
+Objectifs
+• Téléchargements : 5 000 téléchargements le premier semestre
+• Utilisatrices actives : 2 000 utilisatrices actives/mois
+• CA cible à 12 mois : 200 000 USD
+• Durée moyenne des sessions : 10 minutes
+• Partenaires pros onboardés : 100 maquilleurs certifiés
+ 
+Audience / Clientèle
+• Awa, 23 ans, étudiante, aime le maquillage mais manque de technique et de budget.
+• Fatou, 32 ans, maquilleuse pro, cherche à développer sa clientèle et ses revenus.
+• Nafi, 27 ans, jeune active, suit les tendances et veut des recommandations rapides.
+ 
+Enjeux et challenges
+• Digitaliser l’expérience maquillage au Sénégal
+• Valoriser les styles locaux et les pros de beauté
+• Rendre l’IA accessible, utile, et culturellement pertinente
+• Créer un écosystème rentable autour de la beauté féminine
+ 
+Planning prévisionnel
+• Avril – Juin : Maquettage & développement MVP
+• Juillet : Tests utilisateurs
+• Août : Intégration de la marketplace & modules pros
+• Septembre : Lancement officiel
+• Q4 : Compétitions live et déploiement dans d'autres villes
+ 
+Parties prenantes
+• Chef de projet : Toi
+• Développeurs (agence ou prestataire sélectionné)
+• Designers UI/UX
+• Consultants beauté locaux
+• Partenaires marketplace
+• Maquilleurs professionnels (bêta-testeurs)
+ 
+Exigences fonctionnelles
+Arborescence principale
+• Accueil
+• Mon profil
+• Conseils IA
+• Marketplace
+• Espace pro
+• Formations & concours
+• Mon panier
+• Carte cadeau
+Fonctionnalités
+• Compte utilisateur (connexion email, réseaux sociaux)
+• Analyse faciale via IA
+• Recommandations de looks
+• Coaching interactif
+• Réalité augmentée
+• Géolocalisation maquilleurs
+• Messagerie client/pro
+• Paiement intégré
+• Notifications push
+• Cartes cadeaux
+• Live compétitions beauté
+• Système de notation des pros
+ 
+App store / Play store
+L’application devra respecter les normes de sécurité, confidentialité RGPD, performance et accessibilité pour être validée sur les deux plateformes.
+Langues :
+• Langue principale : Français
+• Langue secondaire : Anglais
+Détection automatique de la langue par localisation
+ 
+Technologies et outils
+• Front : Flutter ou React Native
+• Back-end : Node.js ou Django + base de données PostgreSQL
+• IA : Intégration d’un module d’analyse faciale (OpenCV, Mediapipe, etc.)
+• Paiement : Intégration d’APIs Mobile Money et cartes (Wave, Orange, MTN, etc.)
+ 
+Back-office / Administrateur
+• Gestion utilisateurs / pros / formations
+• Ajout/suppression de produits sur la marketplace
+• Suivi des ventes, statistiques
+• Modération des concours et commentaires
+• Campagnes marketing (notifications push, promos)
+ 
+Design et UX
+L’agence devra :
+• Concevoir les maquettes selon les parcours utilisateur proposés
+• S’inspirer d’une ambiance moderne, féminine, accessible
+• Fournir une charte complète (couleurs, typographies, pictos…)
+ 
+Parcours utilisateur simplifié
+• Connexion > selfie ou profil > proposition de styles > guide maquillage > achat ou réservation > note ou partage
+• Pro : Inscription > création profil > prise de rendez-vous > avis clients > visibilité accrue
+ 
+Livrables attendus
+• Cahier technique
+• Maquettes UI (figma ou XD)
+• Application Android + iOS fonctionnelle
+• Accès back-office + documentation
+• Présentation des choix techniques
+• Proposition budgétaire détaillée
+ 
+Critères de sélection
+• Références similaires
+• Compréhension du projet et des enjeux culturels
+• Qualité du design et UX proposés
+• Compétences IA et marketplace
+• Rapport qualité/prix
