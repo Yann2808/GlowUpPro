@@ -7,7 +7,7 @@ import {
   analyzeFacialFeatures, 
   generateMakeupRecommendations,
   analyzeProductCompatibility 
-} from "./openai";
+} from "./grok";
 import { 
   insertFacialAnalysisSchema,
   insertCartItemSchema,
