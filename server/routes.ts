@@ -7,7 +7,7 @@ import {
   analyzeFacialFeatures, 
   generateMakeupRecommendations,
   analyzeProductCompatibility 
-} from "./grok";
+} from "./demo-analysis";
 import { 
   insertFacialAnalysisSchema,
   insertCartItemSchema,
