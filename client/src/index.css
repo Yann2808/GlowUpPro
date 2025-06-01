@@ -1,0 +1,185 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+:root {
+  --background: 43 7% 98%; /* #FEFCF8 */
+  --foreground: 27 23% 27%; /* #6B5B5B */
+  --muted: 36 16% 96%; /* #F9F7F4 */
+  --muted-foreground: 27 23% 42%; /* #6B5B5B */
+  --popover: 0 0% 100%;
+  --popover-foreground: 20 14.3% 4.1%;
+  --card: 0 0% 100%;
+  --card-foreground: 20 14.3% 4.1%;
+  --border: 20 5.9% 90%;
+  --input: 20 5.9% 90%;
+  --primary: 14 86% 65%; /* #E07A5F */
+  --primary-foreground: 35 100% 99%; /* #FEFCF8 */
+  --secondary: 33 80% 68%; /* #F2A365 */
+  --secondary-foreground: 27 23% 27%;
+  --accent: 329 75% 70%; /* #FF6B9D */
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 60 9.1% 97.8%;
+  --ring: 20 14.3% 4.1%;
+  --radius: 0.5rem;
+  --chart-1: 14 86% 65%;
+  --chart-2: 33 80% 68%;
+  --chart-3: 329 75% 70%;
+  --chart-4: 25 95% 53%;
+  --chart-5: 22 92% 56%;
+  
+  /* Custom GlowUp colors */
+  --brown: 25 95% 28%; /* #8B4513 */
+  --golden: 39 77% 63%; /* #F4A261 */
+  --cream: 36 16% 96%; /* #F9F7F4 */
+  --warm-gray: 27 23% 42%; /* #6B5B5B */
+}
+
+.dark {
+  --background: 240 10% 3.9%;
+  --foreground: 0 0% 98%;
+  --muted: 240 3.7% 15.9%;
+  --muted-foreground: 240 5% 64.9%;
+  --popover: 240 10% 3.9%;
+  --popover-foreground: 0 0% 98%;
+  --card: 240 10% 3.9%;
+  --card-foreground: 0 0% 98%;
+  --border: 240 3.7% 15.9%;
+  --input: 240 3.7% 15.9%;
+  --primary: 14 86% 65%;
+  --primary-foreground: 35 100% 99%;
+  --secondary: 240 3.7% 15.9%;
+  --secondary-foreground: 0 0% 98%;
+  --accent: 329 75% 70%;
+  --accent-foreground: 0 0% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+  --ring: 240 4.9% 83.9%;
+  --radius: 0.5rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-inter antialiased bg-background text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  }
+}
+
+@layer utilities {
+  .font-poppins {
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  }
+  
+  .font-inter {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  }
+
+  .text-brown {
+    color: hsl(var(--brown));
+  }
+
+  .bg-brown {
+    background-color: hsl(var(--brown));
+  }
+
+  .text-golden {
+    color: hsl(var(--golden));
+  }
+
+  .bg-golden {
+    background-color: hsl(var(--golden));
+  }
+
+  .text-cream {
+    color: hsl(var(--cream));
+  }
+
+  .bg-cream {
+    background-color: hsl(var(--cream));
+  }
+
+  .text-warm-gray {
+    color: hsl(var(--warm-gray));
+  }
+
+  .bg-warm-gray {
+    background-color: hsl(var(--warm-gray));
+  }
+
+  .gradient-glow {
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
+  }
+
+  .gradient-accent {
+    background: linear-gradient(135deg, hsl(var(--golden)), hsl(var(--secondary)));
+  }
+
+  .gradient-hero {
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+  }
+}
+
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary));
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary));
+}
+
+/* Animation classes */
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-up {
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile-first responsive utilities */
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 80px);
+}
