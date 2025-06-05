@@ -7,7 +7,7 @@ import {
   analyzeFacialFeatures, 
   generateMakeupRecommendations,
   analyzeProductCompatibility 
-} from "./openai";
+} from "./demo-analysis";
 import { 
   insertFacialAnalysisSchema,
   insertCartItemSchema,
