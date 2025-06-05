@@ -7,7 +7,7 @@ import { useAuth } from "@/hooks/useAuth";
 import NotFound from "@/pages/not-found";
 import Landing from "@/pages/landing";
 import Home from "@/pages/home";
-import AIAnalysis from "@/pages/ai-analysis";
+
 import Marketplace from "@/pages/marketplace";
 import Professionals from "@/pages/professionals";
 import Profile from "@/pages/profile";
@@ -22,7 +22,7 @@ function Router() {
       ) : (
         <>
           <Route path="/" component={Home} />
-          <Route path="/ai-analysis" component={AIAnalysis} />
+
           <Route path="/marketplace" component={Marketplace} />
           <Route path="/professionals" component={Professionals} />
           <Route path="/profile" component={Profile} />
