@@ -2,7 +2,7 @@ import OpenAI from "openai";
 
 // the newest OpenAI model is "gpt-4o" which was released May 13, 2024. do not change this unless explicitly requested by the user
 const openai = new OpenAI({ 
-  apiKey: process.env.OPENAI_API_KEY || process.env.OPENAI_API_KEY_ENV_VAR || "default_key"
+  apiKey: process.env.OPENAI_API_KEY
 });
 
 export interface FacialAnalysisResult {
@@ -36,18 +36,18 @@ export async function analyzeFacialFeatures(base64Image: string): Promise<Facial
       messages: [
         {
           role: "system",
-          content: `You are an expert makeup artist specializing in beauty for African and Afro-Caribbean women. 
-          Analyze the facial features in the image and provide personalized makeup recommendations. 
-          Focus on celebrating natural beauty and providing culturally relevant advice.
-          Respond with JSON in this exact format: {
-            "skinTone": "description of skin tone (e.g., 'rich ebony', 'golden brown', 'warm caramel')",
-            "faceShape": "face shape (oval, round, square, heart, diamond)",
-            "eyeColor": "eye color description",
+          content: `Vous êtes une experte maquilleuse spécialisée dans la beauté des femmes africaines et afro-caribéennes. 
+          Analysez les traits du visage dans l'image et fournissez des recommandations maquillage personnalisées. 
+          Concentrez-vous sur la célébration de la beauté naturelle et des conseils culturellement pertinents.
+          Répondez avec JSON dans ce format exact: {
+            "skinTone": "description du teint (ex: 'ébène riche', 'brun doré', 'caramel chaud')",
+            "faceShape": "forme du visage (ovale, rond, carré, cœur, diamant)",
+            "eyeColor": "description de la couleur des yeux",
             "recommendations": {
-              "foundationShade": "specific foundation shade recommendation",
-              "bestColors": ["array of colors that complement the skin tone"],
-              "avoidColors": ["colors to avoid"],
-              "makeupTips": ["array of specific makeup tips for this person"]
+              "foundationShade": "recommandation de teinte de fond de teint spécifique",
+              "bestColors": ["tableau des couleurs qui complètent le teint"],
+              "avoidColors": ["couleurs à éviter"],
+              "makeupTips": ["tableau de conseils maquillage spécifiques pour cette personne"]
             }
           }`
         },
@@ -56,7 +56,7 @@ export async function analyzeFacialFeatures(base64Image: string): Promise<Facial
           content: [
             {
               type: "text",
-              text: "Please analyze this person's facial features and provide personalized makeup recommendations focusing on their skin tone, face shape, and eye color. Consider African and Afro-Caribbean beauty standards and preferences."
+              text: "Analysez les traits du visage de cette personne et fournissez des recommandations maquillage personnalisées en vous concentrant sur son teint, la forme de son visage et la couleur de ses yeux. Considérez les standards de beauté africains et afro-caribéens."
             },
             {
               type: "image_url",
@@ -90,32 +90,34 @@ export async function generateMakeupRecommendations(
       messages: [
         {
           role: "system",
-          content: `You are an expert makeup artist specializing in beauty for African and Afro-Caribbean women. 
-          Generate 3-4 makeup look recommendations based on the provided skin tone, face shape, and occasion.
-          Focus on celebrating natural beauty and providing culturally relevant, practical advice.
-          Consider the beauty traditions and preferences of Senegalese and West African women.
-          Respond with JSON array in this exact format: [{
-            "lookName": "descriptive name of the look",
-            "difficulty": "beginner|intermediate|advanced",
-            "products": [
-              {
-                "type": "product type (foundation, concealer, eyeshadow, etc.)",
-                "shade": "specific shade recommendation",
-                "application": "how to apply this product"
-              }
-            ],
-            "steps": ["step-by-step instructions"],
-            "culturalNotes": "optional cultural context or inspiration"
-          }]`
+          content: `Vous êtes une experte maquilleuse spécialisée dans la beauté des femmes africaines et afro-caribéennes. 
+          Générez 3-4 recommandations de looks maquillage basées sur le teint, la forme du visage et l'occasion fournis.
+          Concentrez-vous sur la célébration de la beauté naturelle et des conseils culturellement pertinents et pratiques.
+          Considérez les traditions de beauté et préférences des femmes sénégalaises et ouest-africaines.
+          Répondez avec un tableau JSON dans ce format exact: {
+            "looks": [{
+              "lookName": "nom descriptif du look",
+              "difficulty": "beginner|intermediate|advanced",
+              "products": [
+                {
+                  "type": "type de produit (fond de teint, correcteur, fard à paupières, etc.)",
+                  "shade": "recommandation de teinte spécifique",
+                  "application": "comment appliquer ce produit"
+                }
+              ],
+              "steps": ["instructions étape par étape"],
+              "culturalNotes": "contexte culturel ou inspiration optionnel"
+            }]
+          }`
         },
         {
           role: "user",
-          content: `Generate makeup recommendations for:
-          - Skin tone: ${skinTone}
-          - Face shape: ${faceShape}
+          content: `Générez des recommandations maquillage pour:
+          - Teint: ${skinTone}
+          - Forme du visage: ${faceShape}
           - Occasion: ${occasion}
           
-          Please provide 3-4 different makeup looks ranging from natural to more dramatic, appropriate for Senegalese women.`
+          Fournissez 3-4 looks maquillage différents allant du naturel au plus spectaculaire, appropriés pour les femmes sénégalaises.`
         },
       ],
       response_format: { type: "json_object" },
@@ -123,7 +125,7 @@ export async function generateMakeupRecommendations(
     });
 
     const result = JSON.parse(response.choices[0].message.content || "{}");
-    return result.recommendations || result.looks || [];
+    return result.looks || result.recommendations || [];
   } catch (error) {
     console.error("Error generating makeup recommendations:", error);
     throw new Error("Failed to generate makeup recommendations: " + (error as Error).message);
@@ -146,23 +148,23 @@ export async function analyzeProductCompatibility(
       messages: [
         {
           role: "system",
-          content: `You are an expert makeup artist specializing in color matching for African and Afro-Caribbean skin tones.
-          Analyze the compatibility of a makeup product with the given skin tone.
-          Respond with JSON in this exact format: {
+          content: `Vous êtes une experte maquilleuse spécialisée dans l'assortiment de couleurs pour les teints africains et afro-caribéens.
+          Analysez la compatibilité d'un produit maquillage avec le teint donné.
+          Répondez avec JSON dans ce format exact: {
             "compatible": boolean,
-            "score": number between 0-10,
-            "explanation": "detailed explanation of why this product works or doesn't work",
-            "alternativeShades": ["array of better shade options if score < 7"]
+            "score": nombre entre 0-10,
+            "explanation": "explication détaillée de pourquoi ce produit fonctionne ou ne fonctionne pas",
+            "alternativeShades": ["tableau d'options de teintes meilleures si score < 7"]
           }`
         },
         {
           role: "user",
-          content: `Analyze the compatibility of:
-          - Skin tone: ${skinTone}
-          - Product type: ${productType}
-          - Product shade: ${productShade}
+          content: `Analysez la compatibilité de:
+          - Teint: ${skinTone}
+          - Type de produit: ${productType}
+          - Teinte du produit: ${productShade}
           
-          Please evaluate how well this product shade would work for this skin tone.`
+          Évaluez à quel point cette teinte de produit fonctionnerait pour ce teint.`
         },
       ],
       response_format: { type: "json_object" },
